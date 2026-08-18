@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Chúc mừng sinh nhật Ngọc 🎂</title>
+<style>
+  :root{
+    --pink:#ff6f91; --light:#fff3f7; --gold:#f6c85f; --ink:#4b3140;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; min-height:100vh; overflow-x:hidden;
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    background:linear-gradient(160deg,#fff7fb,#ffe4ef 55%,#fff4d6);
+    color:var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    padding:24px;
+  }
+  .card{
+    width:min(760px,100%);
+    background:rgba(255,255,255,.84);
+    border:1px solid rgba(255,111,145,.25);
+    border-radius:28px;
+    padding:34px 24px;
+    text-align:center;
+    box-shadow:0 20px 60px rgba(126,62,87,.18);
+    backdrop-filter:blur(8px);
+    position:relative;
+    z-index:2;
+  }
+  h1{font-size:clamp(34px,8vw,68px);margin:6px 0;color:var(--pink)}
+  h2{margin:0 0 20px;font-weight:700}
+  .cake{font-size:76px;filter:drop-shadow(0 8px 8px rgba(0,0,0,.08));}
+  .msg{
+    font-size:clamp(18px,3.8vw,24px);
+    line-height:1.6; max-width:620px; margin:20px auto;
+  }
+  .btn{
+    border:none;border-radius:999px;padding:14px 22px;
+    font-size:17px;font-weight:700;cursor:pointer;
+    background:var(--pink);color:white;
+    box-shadow:0 8px 20px rgba(255,111,145,.28);
+  }
+  .small{margin-top:18px;font-size:14px;opacity:.7}
+  .balloon{
+    position:fixed; bottom:-120px; width:54px; height:68px;
+    border-radius:50% 50% 45% 45%; opacity:.75; z-index:1;
+    animation:floatUp linear infinite;
+  }
+  .balloon:after{
+    content:""; position:absolute; left:50%; top:66px;
+    width:1px;height:90px;background:rgba(80,50,70,.35)
+  }
+  @keyframes floatUp{
+    from{transform:translateY(0) rotate(-3deg)}
+    to{transform:translateY(-125vh) rotate(8deg)}
+  }
+  .confetti{position:fixed;top:-20px;width:10px;height:18px;z-index:3;animation:fall linear forwards}
+  @keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="cake">🎂</div>
+    <h1>Happy Birthday, Ngọc!</h1>
+    <h2>🎉 Chúc mừng sinh nhật 🎉</h2>
+    <div class="msg">
+      Chúc Ngọc tuổi mới luôn vui vẻ, xinh đẹp, hạnh phúc và gặp thật nhiều may mắn.
+      Mong mọi điều Ngọc mong ước đều dần trở thành hiện thực. 💖
+    </div>
+    <button class="btn" onclick="celebrate()">Bấm để nhận bất ngờ ✨</button>
+    <div class="small">Một lời chúc nhỏ dành riêng cho Ngọc 💝</div>
+  </div>
+
+<script>
+const colors=['#ff6f91','#ffc75f','#845ec2','#4cc9f0','#f9f871'];
+for(let i=0;i<12;i++){
+  const b=document.createElement('div');
+  b.className='balloon';
+  b.style.left=(Math.random()*95)+'vw';
+  b.style.background=colors[i%colors.length];
+  b.style.animationDuration=(8+Math.random()*8)+'s';
+  b.style.animationDelay=(-Math.random()*12)+'s';
+  document.body.appendChild(b);
+}
+function celebrate(){
+  for(let i=0;i<90;i++){
+    const c=document.createElement('div');
+    c.className='confetti';
+    c.style.left=(Math.random()*100)+'vw';
+    c.style.background=colors[Math.floor(Math.random()*colors.length)];
+    c.style.animationDuration=(2+Math.random()*3)+'s';
+    c.style.transform=`rotate(${Math.random()*360}deg)`;
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),5200);
+  }
+  if(navigator.vibrate) navigator.vibrate([80,50,80]);
+}
+</script>
+</body>
+</html>
